@@ -1,0 +1,13 @@
+{
+  "name": "jzt2-data-updater",
+  "version": "1.0.0",
+  "description": "建站通2.0 数据包更新工具（配合 update-data.js 使用）",
+  "main": "update-data.js",
+  "scripts": {
+    "update": "node update-data.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.10"
+  }
+}

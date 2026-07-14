@@ -100,6 +100,6 @@ requestData(api, datas, callBack)
 
 ## 数据包更新
 
-客户端改完数据后，重新下载解压到 `jsonDatas/`（勿改名）。推荐用本 skill 自带的通用脚本 `scripts/update-data.js`：复制到项目根目录 → `npm i adm-zip` → `node update-data.js <site_id>`（或编辑文件顶部 `SITE_ID` 常量后直接运行）。脚本自动下载 `https://jzt2.china9.cn/api/Download/index?site_id=<本站id>` 并解压，旧包备份到 `jsonDatas_backup/`，且已处理服务端 zip 末尾附带 ThinkPHP trace 导致解压失败的坑。项目里已有 `update-data.js` 的直接 `node update-data.js` 即可。
+客户端改完数据后，重新下载解压到 `jsonDatas/`（勿改名）。推荐用本 skill 自带的通用脚本：把 `scripts/update-data.js` 和 `scripts/package.json` 一起复制到项目根目录 → `npm i` → `node update-data.js <site_id>`（或编辑文件顶部 `SITE_ID` 常量后 `npm run update`）。脚本自动下载 `https://jzt2.china9.cn/api/Download/index?site_id=<本站id>` 并解压，旧包备份到 `jsonDatas_backup/`，且已处理服务端 zip 末尾附带 ThinkPHP trace 导致解压失败的坑。项目里已有 `update-data.js` 的直接 `node update-data.js` 即可。记得把 `node_modules/`、`package-lock.json`、`jsonDatas_backup/` 加进 `.gitignore`。
 
 官方文档：https://www.showdoc.com.cn/2047618105032301/9242649531105122 ；demo 仓库：https://gitee.com/Silence108/jzt2.0-demo
