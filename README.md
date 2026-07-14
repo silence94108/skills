@@ -16,6 +16,12 @@ cp -r photoshop-design ~/.claude/skills/
 
 重开 Claude Code 后,PS 相关任务会自动加载,或用 `/photoshop-design` 手动唤起。
 
+## ui-sites
+
+UI/UX 离线设计知识库。基于 55 个顶级设计资源网站预提取的设计知识,覆盖配色、字体排版、布局、组件、动效、设计系统、Landing Page、移动端、Logo 设计 9 大主题,通过 `_index` 两层加载按需读取,无需联网即可输出专业设计方案和代码。
+
+> 独立仓库: [silence94108/ui-sites](https://github.com/silence94108/ui-sites),此处为快照收录(不含 `.git`/`.history` 等仓库元数据)。
+
 ---
 
 ## 本机维护(重要,别忘)
