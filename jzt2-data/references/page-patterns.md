@@ -83,6 +83,8 @@ Vue.createApp({
 
 官方接口：`POST https://jzt2.china9.cn/api/message/addMsg`，用 jQuery `$.post`（jquery 因此必引）。`content` 的 key 就是制作端留言列表里显示的中文列名，可按站点需要增减字段。
 
+**`column_id`（留言栏目 id）必传**——官方使用示例里省略了它，且实测不传服务端也返回 200，但留言不会归档到制作端对应栏目下，客户在制作端按栏目查留言会丢。它在数据包 `jsonDatas/` 里查不到（留言栏目没有数据导出），只能登录制作端（https://jzt2.china9.cn/make/）查看。**做留言功能前若不知道本站的留言栏目 id，停下来向用户/制作人员索要，不许省略、不许猜、不许抄别的站**。
+
 ```js
 Vue.createApp({
   setup() {
@@ -92,7 +94,8 @@ Vue.createApp({
       if (!message.value.phone) return alert('请输入您的联系电话')
       if (!message.value.message) return alert('请输入您的内容')
       $.post('https://jzt2.china9.cn/api/message/addMsg', {
-        site_id: 'SITE_ID',   // ← 本站唯一 id：查 update-data.js 下载地址或制作端，禁止抄别的站
+        site_id: 'SITE_ID',            // ← 本站唯一 id：查 update-data.js 下载地址或制作端，禁止抄别的站
+        column_id: 'MSG_COLUMN_ID',    // ← 留言栏目 id：制作端查看；拿不到就先问用户，见上方说明
         content: {
           '姓名': message.value.name,
           '邮箱地址': message.value.email,
@@ -112,6 +115,8 @@ Vue.createApp({
   }
 }).component('HeaderApp', headerApp).mount('#form-app')
 ```
+
+多个页面都有留言表单时，把 `site_id` / `column_id` 放进全站共享配置（如 `components/site-data.js` 的 `window.SITE`），提交处统一引用，避免散落多处。
 
 ## 4. 首页轮播（swiper 初始化时机是关键）
 
